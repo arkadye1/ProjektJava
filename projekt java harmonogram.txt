@@ -7,13 +7,13 @@ Harmonogram:
 1.Okienka:
 - Okienko logowania //oddano 17.03.2015
 - Okienko rejestracji //oddano 17.03.2015
-- G³ówne okno aplikacji dla klienta
-- G³ówne okno dla obs³ugi 
+- G³ówne okno aplikacji dla klienta //oddano 24.03.2015
+- G³ówne okno dla obs³ugi //oddano 24.03.2015
 2. Zapis i odczyt plików:
 - zapis zamówienia do pliku
 - eksport wszystkich zamówieñ do pliku
-- zapis danych klienta do pliku
-- generowanie pliku tekstowego z list¹ aktualnych zamówieñ
+- zapis danych klienta do pliku (panel obs³ugi)
+- generowanie pliku tekstowego z list¹ aktualnych zamówieñ(panel obs³ugi)
 3.Wspó³bierznoœæ:
 - Proces logowania w osobnym w¹tku
 - Wielodostêpowy serwer (kilku klientów na raz)
@@ -22,7 +22,7 @@ Harmonogram:
 4.Bazy danych:
 - Zaimplementowanie po³¹czenia z baz¹ danych
 -  Rejestracja nowych u¿ytkowników
-- Stworzenie bazy danych potraw i sk³adników
+- Stworzenie bazy danych u¿ytkowników
 - Generowanie statystyk zamówieñ 
 5. Komunikacja sieciowa:
 - Stworzenie klienta
