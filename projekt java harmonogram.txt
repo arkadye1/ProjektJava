@@ -10,8 +10,8 @@ Harmonogram:
 - G³ówne okno aplikacji dla klienta //oddano 24.03.2015
 - G³ówne okno dla obs³ugi //oddano 24.03.2015
 2. Zapis i odczyt plików:
-- zapis zamówienia do pliku
-- eksport wszystkich zamówieñ do pliku
+- zapis zamówienia do pliku //oddano 31.03.2015
+- eksport wszystkich zamówieñ do pliku //oddano 31.03.2015
 - zapis danych klienta do pliku (panel obs³ugi)
 - generowanie pliku tekstowego z list¹ aktualnych zamówieñ(panel obs³ugi)
 3.Wspó³bierznoœæ:

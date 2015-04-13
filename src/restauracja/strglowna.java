@@ -5,7 +5,7 @@
  */
 package restauracja;
 
-
+import java.io.*;
 
 /**
  *
@@ -96,6 +96,27 @@ public class strglowna extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        Zapiszklient = new javax.swing.JFileChooser();
+        Otworzklient = new javax.swing.JFileChooser();
+        Zapishistoria = new javax.swing.JFileChooser();
+        Zapiszam = new javax.swing.JFileChooser();
+        Realizuj = new javax.swing.JDialog();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jButton15 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextArea8 = new javax.swing.JTextArea();
+        jButton16 = new javax.swing.JButton();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        Zapiszamowien = new javax.swing.JDialog();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
         Panelklienta = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         wyloguj = new javax.swing.JButton();
@@ -425,8 +446,18 @@ public class strglowna extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
         jButton7.setText("Realizuj zamówienie");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Zapis zamówień");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Zapis danych klienta");
 
@@ -444,17 +475,14 @@ public class strglowna extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
 
-        jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
         jScrollPane4.setViewportView(jTextArea3);
 
-        jTextArea4.setEditable(false);
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
         jScrollPane5.setViewportView(jTextArea4);
@@ -579,6 +607,147 @@ public class strglowna extends javax.swing.JFrame {
         panelobslugiLayout.setVerticalGroup(
             panelobslugiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        Zapiszklient.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
+        Zapiszklient.setCurrentDirectory(new java.io.File("C:\\Users\\Arkadye\\Desktop"));
+        Zapiszklient.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        Otworzklient.setCurrentDirectory(new java.io.File("C:\\Users\\Arkadye\\Desktop"));
+
+        Zapishistoria.setCurrentDirectory(new java.io.File("C:\\Users\\Arkadye\\Desktop"));
+
+        Zapiszam.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
+        Zapiszam.setCurrentDirectory(new java.io.File("C:\\Users\\Arkadye\\Desktop"));
+
+        Realizuj.setMinimumSize(new java.awt.Dimension(400, 400));
+        Realizuj.setResizable(false);
+
+        jCheckBox3.setText("Zamówienie 1");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox4.setText("Zamówienie 2");
+
+        jCheckBox5.setText("Zamówienie 3");
+
+        jButton15.setText("Realizuj");
+
+        jTextArea8.setColumns(20);
+        jTextArea8.setRows(5);
+        jScrollPane8.setViewportView(jTextArea8);
+
+        jButton16.setText("Anuluj");
+
+        jLabel23.setText("Czas realizacji");
+
+        javax.swing.GroupLayout RealizujLayout = new javax.swing.GroupLayout(Realizuj.getContentPane());
+        Realizuj.getContentPane().setLayout(RealizujLayout);
+        RealizujLayout.setHorizontalGroup(
+            RealizujLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RealizujLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(RealizujLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(RealizujLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+        RealizujLayout.setVerticalGroup(
+            RealizujLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RealizujLayout.createSequentialGroup()
+                .addGroup(RealizujLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(RealizujLayout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jCheckBox3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(RealizujLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 45, Short.MAX_VALUE))
+        );
+
+        Zapiszamowien.setMinimumSize(new java.awt.Dimension(400, 250));
+        Zapiszamowien.setResizable(false);
+
+        jCheckBox6.setText("Zamówienie 1");
+
+        jCheckBox7.setText("Zamówienie 2");
+
+        jCheckBox8.setText("Zamówienie 3");
+
+        jCheckBox9.setText("Wszystkie");
+
+        jButton17.setText("Zapisz");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+
+        jButton18.setText("Anuluj");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ZapiszamowienLayout = new javax.swing.GroupLayout(Zapiszamowien.getContentPane());
+        Zapiszamowien.getContentPane().setLayout(ZapiszamowienLayout);
+        ZapiszamowienLayout.setHorizontalGroup(
+            ZapiszamowienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ZapiszamowienLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ZapiszamowienLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ZapiszamowienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCheckBox6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(136, 136, 136))
+        );
+        ZapiszamowienLayout.setVerticalGroup(
+            ZapiszamowienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ZapiszamowienLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jCheckBox6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(ZapiszamowienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -871,9 +1040,19 @@ public class strglowna extends javax.swing.JFrame {
         jTextArea7.setRows(5);
         jScrollPane9.setViewportView(jTextArea7);
 
-        jButton13.setText("jButton13");
+        jButton13.setText("Zapisz");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
-        jButton14.setText("jButton14");
+        jButton14.setText("Wróć");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout HistzamowLayout = new javax.swing.GroupLayout(Histzamow);
         Histzamow.setLayout(HistzamowLayout);
@@ -883,9 +1062,9 @@ public class strglowna extends javax.swing.JFrame {
                 .addGap(99, 99, 99)
                 .addGroup(HistzamowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(HistzamowLayout.createSequentialGroup()
-                        .addComponent(jButton13)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton14))
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
@@ -895,10 +1074,10 @@ public class strglowna extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(HistzamowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton13)
-                    .addComponent(jButton14))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGroup(HistzamowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 204, 102));
@@ -1040,7 +1219,13 @@ if (!jTextField2.getText().isEmpty()||!jTextField3.getText().isEmpty()){
     }//GEN-LAST:event_RosolMouseMoved
 
     private void zamowienieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zamowienieActionPerformed
+if(jTextArea1.getText().equals("")){
 jTextArea1.setText(jTextPane1.getText());
+}else{
+    jTextArea3.setText(jTextPane1.getText());
+}
+    
+jTextArea7.append(jTextPane1.getText()+ "\n****************************************\n");
 jTextPane1.setText("");
 jTextField4.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_zamowienieActionPerformed
@@ -1060,11 +1245,34 @@ Histzamow.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void zapiszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zapiszActionPerformed
-       // TODO add your handling code here:
+int odpowiedz = Zapiszklient.showSaveDialog(this);
+   if (odpowiedz == Zapiszklient.APPROVE_OPTION) {
+       File file = Zapiszklient.getSelectedFile();
+       try {
+          FileWriter out = new FileWriter(file);
+           String text = jTextPane1.getText();
+           out.write(text.replaceAll("\n", System.getProperty("line.separator")));
+           out.close();
+       } catch (IOException e) {
+           System.out.println("Nie mogę zapisać pliku: "+file.getAbsolutePath());
+           System.out.println("Problem: "+e);
+       }
+   }
+       
     }//GEN-LAST:event_zapiszActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       // TODO add your handling code here:
+int odpowiedz = Otworzklient.showOpenDialog(this);
+      if (odpowiedz == Otworzklient.APPROVE_OPTION) {
+          File file = Otworzklient.getSelectedFile();
+          try {
+              jTextPane1.read( new FileReader( file.getAbsolutePath() ), null );
+          } catch (IOException e) {
+              System.out.println("Nie mogę otworzyć pliku: "+file.getAbsolutePath());
+              System.out.println("Problem: "+e);
+          }
+      }
+    
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -1084,6 +1292,78 @@ oknostart.setVisible(true);// TODO add your handling code here:
 System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+Realizuj.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+int odpowiedz = Zapishistoria.showSaveDialog(this);
+   if (odpowiedz == Zapishistoria.APPROVE_OPTION) {
+       File file = Zapishistoria.getSelectedFile();
+       try {
+           FileWriter out = new FileWriter(file);
+           String text = jTextArea7.getText();
+           out.write(text.replaceAll("\n", System.getProperty("line.separator")));
+           out.close();
+
+       } catch (IOException e) {
+           System.out.println("Nie mogę zapisać pliku: "+file.getAbsolutePath());
+           System.out.println("Problem: "+e);
+       } 
+   }// TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        Panelklienta.setVisible(true);
+        Histzamow.setVisible(false);              // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+Zapiszamowien.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+int odpowiedz = Zapiszam.showSaveDialog(this);
+   if (odpowiedz == Zapiszam.APPROVE_OPTION) {
+       File file = Zapiszam.getSelectedFile();
+       try {
+           FileWriter out = new FileWriter(file);
+           if (jCheckBox6.isSelected()){
+           String text = jTextArea1.getText()+"\n"+jTextArea2.getText();
+           out.write(text.replaceAll("\n", System.getProperty("line.separator")));
+           out.close();
+           }
+           else if (jCheckBox7.isSelected()){
+           String text = jTextArea3.getText()+"\n"+jTextArea4.getText();
+           out.write(text.replaceAll("\n", System.getProperty("line.separator")));
+           out.close();
+           }
+           else if (jCheckBox8.isSelected()){
+           String text = jTextArea5.getText()+"\n"+jTextArea6.getText();
+           out.write(text.replaceAll("\n", System.getProperty("line.separator")));
+           out.close();
+           }
+           else if(jCheckBox9.isSelected()){
+              String text = (jTextArea1.getText()+"\n\n"+jTextArea2.getText()+"\n\n"+jTextArea3.getText()+"\n\n"+jTextArea4.getText()+"\n\n"+jTextArea5.getText()+"\n\n"+jTextArea6.getText());
+           out.write(text.replaceAll("\n", System.getProperty("line.separator"))); 
+           out.close();
+           }
+       } catch (IOException e) {
+           System.out.println("Nie mogę zapisać pliku: "+file.getAbsolutePath());
+           System.out.println("Problem: "+e);
+       } 
+   }     
+   Zapiszamowien.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+      Zapiszamowien.dispose();  // TODO add your handling code here:
+    }//GEN-LAST:event_jButton18ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -1112,11 +1392,17 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JTextField Miejscowoscrej;
     private javax.swing.JPanel Napoje;
     private javax.swing.JTextField Nrmieszrej;
+    private javax.swing.JFileChooser Otworzklient;
     private javax.swing.JPanel Panelklienta;
+    private javax.swing.JDialog Realizuj;
     private javax.swing.JPanel Rejestracja;
     private javax.swing.JLabel Rosol;
     private javax.swing.JTextField Telefonrej;
     private javax.swing.JTextField Ulicarej;
+    private javax.swing.JFileChooser Zapishistoria;
+    private javax.swing.JFileChooser Zapiszam;
+    private javax.swing.JDialog Zapiszamowien;
+    private javax.swing.JFileChooser Zapiszklient;
     private javax.swing.JPanel Zupy;
     private javax.swing.JTextField emailrej;
     private javax.swing.JButton jButton1;
@@ -1125,6 +1411,10 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1135,6 +1425,13 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox7;
+    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1150,6 +1447,7 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1175,6 +1473,7 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
@@ -1183,10 +1482,12 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextArea jTextArea7;
+    private javax.swing.JTextArea jTextArea8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField loginrej;
     private javax.swing.JTextField nazwiskorej;
