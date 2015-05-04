@@ -12,17 +12,17 @@ Harmonogram:
 2. Zapis i odczyt plików:
 - zapis zamówienia do pliku //oddano 31.03.2015
 - eksport wszystkich zamówieñ do pliku //oddano 31.03.2015
-- zapis danych klienta do pliku (panel obs³ugi)
-- generowanie pliku tekstowego z list¹ aktualnych zamówieñ(panel obs³ugi)
+- zapis danych klienta do pliku (panel obs³ugi) //oddano 14.04.2015 
+- generowanie pliku tekstowego z list¹ aktualnych zamówieñ(panel obs³ugi) //oddano 14.04.2015
 3.Wspó³bierznoœæ:
-- Proces logowania w osobnym w¹tku
+- aktualna godzina i orientacyjny czas realizacji zamówienia //oddano 28.04.2015
 - Wielodostêpowy serwer (kilku klientów na raz)
 -U klienta nas³uchiwanie od serwera w osobnym w¹tku
 - Obs³uga sieci w osobnym w¹tku
 4.Bazy danych:
-- Zaimplementowanie po³¹czenia z baz¹ danych
--  Rejestracja nowych u¿ytkowników
-- Stworzenie bazy danych u¿ytkowników
+- Zaimplementowanie po³¹czenia z baz¹ danych //oddano 28.04.2015
+-  Rejestracja nowych u¿ytkowników  //oddano 28.04.2015
+- Stworzenie bazy danych u¿ytkowników //oddano 28.04.2015
 - Generowanie statystyk zamówieñ 
 5. Komunikacja sieciowa:
 - Stworzenie klienta
@@ -31,9 +31,9 @@ Harmonogram:
 - Czat z obs³ug¹
 
 6. Zaproponowane przez studenta:
+- Proces logowania w osobnym w¹tku
 - Logowanie z has³em wraz z wyborem typu u¿ytkownika( klient, obs³uga)
 - ocena zamówieñ
-- aktualna godzina i orientacyjny czas realizacji zamówienia
 - realizacja kodów rabatowych
 
 
