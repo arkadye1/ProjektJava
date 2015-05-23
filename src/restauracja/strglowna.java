@@ -29,7 +29,8 @@ public class strglowna extends javax.swing.JFrame {
 Connection con;
 Statement stmt;
 ResultSet rs;
-
+ public Siec conn;
+public PrintWriter out;
 
     public strglowna() {
         
@@ -39,7 +40,7 @@ ResultSet rs;
         oknostart.setVisible(true);
         Logowanie.setVisible(true);
         Rejestracja.setVisible(false);
-       
+        Polaczenie();
         
         
     }
@@ -61,6 +62,31 @@ ResultSet rs;
     } catch (SQLException err){
         JOptionPane.showMessageDialog(strglowna.this, err.getMessage());
     }   
+    }
+    public void addStatus(String txt)
+    {
+        jTextArea4.append(txt + "\n");
+        jTextArea4.setCaretPosition(jTextArea4.getText().length()-1);
+    }
+    
+    private void chatSend()
+    {
+       if(out != null) {
+           sendCommand("CHAT:"+jTextArea4.getText());
+           jTextArea4.append("<ja> " +  jTextField7.getText()+"\n");
+           jTextField7.setText("");
+           jTextArea4.setCaretPosition(jTextArea4.getText().length()-1);
+       } else {
+           addStatus("Brak połączenia");
+       }               
+    }
+    public void sendCommand(String output)
+    {
+        try {
+            out.println(output);
+        } catch(Exception ex) {
+            addStatus(ex.getMessage());
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -174,6 +200,10 @@ ResultSet rs;
         jButton8 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jTextField7 = new javax.swing.JTextField();
+        jButton22 = new javax.swing.JButton();
         Histzamow = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTextArea7 = new javax.swing.JTextArea();
@@ -529,13 +559,16 @@ ResultSet rs;
         });
         jScrollPane10.setViewportView(jList1);
 
-        jTextField6.setText("jTextField6");
-
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
         jScrollPane4.setViewportView(jTextArea3);
 
         jButton21.setText("Wyślij");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -951,7 +984,7 @@ ResultSet rs;
         );
         DodatkiLayout.setVerticalGroup(
             DodatkiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 326, Short.MAX_VALUE)
         );
 
         Menu.addTab("Dodatki", Dodatki);
@@ -964,7 +997,7 @@ ResultSet rs;
         );
         DeseryLayout.setVerticalGroup(
             DeseryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 326, Short.MAX_VALUE)
         );
 
         Menu.addTab("Desery", Desery);
@@ -977,7 +1010,7 @@ ResultSet rs;
         );
         NapojeLayout.setVerticalGroup(
             NapojeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 326, Short.MAX_VALUE)
         );
 
         Menu.addTab("Napoje", Napoje);
@@ -1009,6 +1042,17 @@ ResultSet rs;
             }
         });
 
+        jTextArea4.setColumns(20);
+        jTextArea4.setRows(5);
+        jScrollPane5.setViewportView(jTextArea4);
+
+        jButton22.setText("Wyślij");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelklientaLayout = new javax.swing.GroupLayout(Panelklienta);
         Panelklienta.setLayout(PanelklientaLayout);
         PanelklientaLayout.setHorizontalGroup(
@@ -1020,13 +1064,23 @@ ResultSet rs;
                     .addGroup(PanelklientaLayout.createSequentialGroup()
                         .addGroup(PanelklientaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(PanelklientaLayout.createSequentialGroup()
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26))
-                            .addGroup(PanelklientaLayout.createSequentialGroup()
                                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelklientaLayout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addGroup(PanelklientaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanelklientaLayout.createSequentialGroup()
+                                        .addGroup(PanelklientaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(45, 45, 45))
+                                    .addGroup(PanelklientaLayout.createSequentialGroup()
+                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(102, 102, 102)))
                         .addGroup(PanelklientaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(zapisz, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1040,7 +1094,7 @@ ResultSet rs;
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel17)))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         PanelklientaLayout.setVerticalGroup(
             PanelklientaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1048,8 +1102,8 @@ ResultSet rs;
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelklientaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(PanelklientaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PanelklientaLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
@@ -1058,21 +1112,33 @@ ResultSet rs;
                             .addComponent(jLabel17)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(zamowienie, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(zamowienie, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Menu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PanelklientaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelklientaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(zapisz, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(wyloguj, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelklientaLayout.createSequentialGroup()
-                        .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelklientaLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(PanelklientaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                            .addGroup(PanelklientaLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(PanelklientaLayout.createSequentialGroup()
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(33, 33, 33))))
         );
 
         jTextArea7.setColumns(20);
@@ -1298,6 +1364,174 @@ Zapiszdane.dispose();        // TODO add your handling code here:
         Realizuj.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void miejscowoscrejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miejscowoscrejActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miejscowoscrejActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Rejestracja.setVisible(false);
+        Logowanie.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        Rejestracja.setVisible(false);
+        Logowanie.setVisible(true);
+        
+    
+        
+        String imie=imierej.getText();
+        String nazwisko=nazwiskorej.getText();
+        String email=emailrej.getText();
+        String login=loginrej.getText();
+        String haslo=passwdrej.getText();
+        String ulica=ulicarej.getText();
+        String mieszkanie=mieszrej.getText();
+        String kod=kodrej.getText();
+        String miejscowosc=miejscowoscrej.getText();
+        String telefon=telefonrej.getText();
+       
+         
+        try{
+            rs.last();
+            int licznik = rs.getInt("ID");
+            rs.moveToInsertRow();
+            rs.updateInt("ID",licznik+1);
+            rs.updateString("Imie", imie);
+            rs.updateString("Nazwisko", nazwisko);
+            rs.updateString("Login", login);
+            rs.updateString("Haslo", haslo);
+            rs.updateString("Email", email);
+            rs.updateString("Ulica", ulica);
+            rs.updateString("Mieszkanie", mieszkanie);
+            rs.updateString("Kod", kod);
+            rs.updateString("Miejscowosc", miejscowosc);
+            rs.updateString("Telefon", telefon);
+           
+            rs.insertRow();
+             
+            stmt.close();
+            rs.close();
+             
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String sql = "SELECT * FROM Uzytkownicy";
+            rs = stmt.executeQuery(sql);
+       
+            
+            
+            rs.next();
+            
+            String imie2 = rs.getString("Imie");
+            String nazwisko2 = rs.getString("Nazwisko");
+            String email2=rs.getString("Email");
+            String login2=rs.getString("Login");
+            String haslo2=rs.getString("Haslo");
+            String ulica2=rs.getString("Ulica");
+            String mieszkanie2=rs.getString("Mieszkanie");
+            String kod2=rs.getString("Kod");
+            String miejscowosc2=rs.getString("Miejscowosc");
+            String telefon2=rs.getString("Telefon");
+             
+            
+            imierej.setText(imie2);
+            nazwiskorej.setText(nazwisko2);
+            emailrej.setText(email2);
+            loginrej.setText(login2);
+            passwdrej.setText(haslo2);
+            ulicarej.setText(ulica2);
+            mieszrej.setText(mieszkanie2);
+            kodrej.setText(kod2);
+            miejscowoscrej.setText(miejscowosc2);
+            telefonrej.setText(telefon2);
+         
+            stmt.close();
+            rs.close();
+             
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void nazwiskorejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazwiskorejActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nazwiskorejActionPerformed
+
+    private void imierejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imierejActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_imierejActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        jCheckBox1.setSelected(false);
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        jCheckBox2.setSelected(false);
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Rejestracja.setVisible(true);
+        Logowanie.setVisible(false);
+
+             
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jLabel8.setText("Witamy " + jTextField1.getText());
+        String log=jTextField1.getText();
+        String has=jPasswordField1.getText();
+        
+        if (jCheckBox1.isSelected()){
+            try {
+                stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                rs=stmt.executeQuery("SELECT 1 FROM Uzytkownicy WHERE Login='"+log+"' AND Haslo='"+has+"'");
+                
+                if(rs.next()){
+                
+                    
+               this.setVisible(true);
+            oknostart.setVisible(false);
+            Panelklienta.setVisible(true);
+            Histzamow.setVisible(false);
+            conn = new Siec(this, false , "localhost");
+            jTextField1.setText("");
+            jPasswordField1.setText("");
+            
+                }
+            stmt.close();
+            rs.close();
+            } catch (SQLException err) {
+                 System.out.println(err.getMessage());
+                    }
+            
+        }
+        else
+        { 
+            conn = new Siec(panelobslugi, true , "localhost");
+            panelobslugi.setVisible(true);
+            oknostart.setVisible(false);new jFrame1().setVisible(true);
+        }
+        
+       //new jFrame1().setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+Date time = new Date();
+ DateFormat df = DateFormat.getTimeInstance(DateFormat.MEDIUM);
+
+jLabel20.setText("Szacowany czas dostarczenia: "+ df.format(time)+" "+ jTextField5.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         if (!jTextField2.getText().isEmpty()||!jTextField3.getText().isEmpty()){
             int a=Integer.parseInt(jLabel21.getText());
@@ -1325,7 +1559,6 @@ Zapiszdane.dispose();        // TODO add your handling code here:
                 System.out.println("Problem: "+e);
             }
         }
-
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -1379,163 +1612,21 @@ Zapiszdane.dispose();        // TODO add your handling code here:
                 System.out.println("Problem: "+e);
             }
         }
-
     }//GEN-LAST:event_zapiszActionPerformed
 
     private void wylogujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wylogujActionPerformed
         this.dispose();
         oknostart.setVisible(true);
-        
+
     }//GEN-LAST:event_wylogujActionPerformed
 
-    private void miejscowoscrejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miejscowoscrejActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miejscowoscrejActionPerformed
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+ chatSend();       // TODO add your handling code here:
+    }//GEN-LAST:event_jButton21ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Rejestracja.setVisible(false);
-        Logowanie.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        Rejestracja.setVisible(false);
-        Logowanie.setVisible(true);
-        
-    Polaczenie();
-        
-    
-        
-        String imie=imierej.getText();
-        String nazwisko=nazwiskorej.getText();
-        String email=emailrej.getText();
-        String login=loginrej.getText();
-        String haslo=passwdrej.getText();
-        String ulica=ulicarej.getText();
-        String mieszkanie=mieszrej.getText();
-        String kod=kodrej.getText();
-        String miejscowosc=miejscowoscrej.getText();
-        String telefon=telefonrej.getText();
-       
-         
-        try{
-            rs.last();
-            int licznik = rs.getRow();
-            rs.moveToInsertRow();
-            rs.updateInt("ID",licznik+1);
-            rs.updateString("Imie", imie);
-            rs.updateString("Nazwisko", nazwisko);
-            rs.updateString("Login", login);
-            rs.updateString("Haslo", haslo);
-            rs.updateString("Email", email);
-            rs.updateString("Ulica", ulica);
-            rs.updateString("Mieszkanie", mieszkanie);
-            rs.updateString("Kod", kod);
-            rs.updateString("Miejscowosc", miejscowosc);
-            rs.updateString("Telefon", telefon);
-           
-            rs.insertRow();
-             
-            stmt.close();
-            rs.close();
-             
-            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            String sql = "SELECT * FROM Uzytkownicy";
-            rs = stmt.executeQuery(sql);
-             
-            
-           
-            
-          
-            rs.next();
-            
-            String imie2 = rs.getString("Imie");
-            String nazwisko2 = rs.getString("Nazwisko");
-            String email2=rs.getString("Email");
-            String login2=rs.getString("Login");
-            String haslo2=rs.getString("Haslo");
-            String ulica2=rs.getString("Ulica");
-            String mieszkanie2=rs.getString("Mieszkanie");
-            String kod2=rs.getString("Kod");
-            String miejscowosc2=rs.getString("Miejscowosc");
-            String telefon2=rs.getString("Telefon");
-             
-            
-            imierej.setText(imie2);
-            nazwiskorej.setText(nazwisko2);
-            emailrej.setText(email2);
-            loginrej.setText(login2);
-        passwdrej.setText(haslo2);
-       ulicarej.setText(ulica2);
-       mieszrej.setText(mieszkanie2);
-       kodrej.setText(kod2);
-       miejscowoscrej.setText(miejscowosc2);
-       telefonrej.setText(telefon2);
-         
-            
-             
-        } catch (SQLException err) {
-            System.out.println(err.getMessage());
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void nazwiskorejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazwiskorejActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nazwiskorejActionPerformed
-
-    private void imierejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imierejActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_imierejActionPerformed
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        jCheckBox1.setSelected(false);
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        jCheckBox2.setSelected(false);
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Rejestracja.setVisible(true);
-        Logowanie.setVisible(false);
-
-             
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jLabel8.setText("Witamy " + jTextField1.getText());
-        if (jCheckBox1.isSelected()){
-            this.setVisible(true);
-            oknostart.setVisible(false);
-            Panelklienta.setVisible(true);
-            Histzamow.setVisible(false);
-        }
-        else
-        { 
-            panelobslugi.setVisible(true);
-            oknostart.setVisible(false);
-        }
-        
-       new jFrame1().setVisible(true);
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-Date time = new Date();
- DateFormat df = DateFormat.getTimeInstance(DateFormat.MEDIUM);
-
-jLabel20.setText("Szacowany czas dostarczenia: "+ df.format(time)+" "+ jTextField5.getText());        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+chatSend();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton22ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1580,6 +1671,7 @@ jLabel20.setText("Szacowany czas dostarczenia: "+ df.format(time)+" "+ jTextFiel
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1630,11 +1722,13 @@ jLabel20.setText("Szacowany czas dostarczenia: "+ df.format(time)+" "+ jTextFiel
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea7;
     private javax.swing.JTextArea jTextArea8;
     private javax.swing.JTextField jTextField1;
@@ -1643,6 +1737,7 @@ jLabel20.setText("Szacowany czas dostarczenia: "+ df.format(time)+" "+ jTextFiel
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField kodrej;
     private javax.swing.JTextField loginrej;

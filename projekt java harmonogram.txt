@@ -25,14 +25,14 @@ Harmonogram:
 - Stworzenie bazy danych u¿ytkowników //oddano 28.04.2015
 - Generowanie statystyk zamówieñ 
 5. Komunikacja sieciowa:
-- Stworzenie klienta
-- Stworzenie serwera
-- Komunikacja klient- serwer(protokó³ komunikacji)
+- Stworzenie klienta//oddano 5.05.2015
+- Stworzenie serwera//oddano 5.05.2015
+- Komunikacja klient- serwer(protokó³ komunikacji)//oddano 5.05.2015
 - Czat z obs³ug¹
 
 6. Zaproponowane przez studenta:
 - Proces logowania w osobnym w¹tku
-- Logowanie z has³em wraz z wyborem typu u¿ytkownika( klient, obs³uga)
+- Logowanie z has³em wraz z wyborem typu u¿ytkownika( klient, obs³uga)//oddano 5.05.2015
 - ocena zamówieñ
 - realizacja kodów rabatowych
 
