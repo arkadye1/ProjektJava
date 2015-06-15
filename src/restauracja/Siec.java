@@ -5,9 +5,12 @@
  */
 package restauracja;
 
+/**
+ *
+ * @author Arkadye
+ */
 import java.net.*;
 import java.io.*;
-import javax.swing.JFrame;
 
 
 public class Siec extends Thread {
@@ -20,24 +23,19 @@ public class Siec extends Thread {
     public BufferedReader in;
     public PrintWriter out;
     public strglowna ai;
+    static boolean master;
     
     
     /** Creates a new instance of Connection */
-    public Siec(strglowna i, boolean sm, String ip) {
+    public Siec(strglowna i,boolean sm, String ip) {
         port = 50000;
         ai = i;
+        master=sm;
         if(sm) {
             setServerMode();
         } else {
             setClientMode(ip);
         }             
-        start();
-    }
-
-    Siec(JFrame panelobslugi , boolean b, String ip) {
-         port = 50000;
-        
-        setServerMode();
         start();
     }
     
@@ -55,25 +53,27 @@ public class Siec extends Thread {
     {
         try {
             if(serverMode) {
+                
                 ServerSocket ss = new ServerSocket(port);
-                s = ss.accept();
+                while (true) {
+                    s = ss.accept();
                 ai.addStatus("Nawiązano połączenie z klientem");
+                break;
+                }
             } else {
+                
                 s = new Socket(serverIP, port);            
                 ai.addStatus("Nawiązano połączenie z serwerem");
+                
             }
-            if(s == null) {
-                // throw new Exception("ex");
-            }
+            
                 out = new PrintWriter( s.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-               ai.out = out;
+                ai.out = out;
             listen();    
         } catch(Exception ex){                
                 ai.addStatus("Błąd połączenia:" + ex.getMessage());;
         }
-        
-        
         
         
     }
@@ -85,10 +85,11 @@ public class Siec extends Thread {
         while(!exit) {
             try {
                 input = in.readLine();
-                //ai.readCommand(input);
+                ai.readCommand(input);
             } catch (Exception ex) {
                 ai.addStatus(ex.getMessage());
                 exit = true;
+                
             }            
             
         }

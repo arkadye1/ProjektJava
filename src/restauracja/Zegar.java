@@ -5,23 +5,23 @@
  */
 package restauracja;
 
-import java.awt.*;
+
 import javax.swing.*;
 import java.util.*;
 import java.text.*;
 
-public class Zegar extends JLabel implements Runnable {
+public class Zegar implements Runnable {
     private Thread watek;
-    
+    public JLabel jLabel25;
 private int pauza = 1000;
  
-
-public Zegar() {
-super("", SwingConstants.CENTER);
+ Zegar(JLabel x) {
+     jLabel25=x;
+/*super("", SwingConstants.CENTER);
 setFont (new Font ("Veranda", Font.BOLD, 24));
 setBackground( new Color(255,255,102));
 setForeground(Color.BLACK);
-setOpaque(true);
+setOpaque(true);*/
 }
  
 public void start() {
@@ -34,7 +34,7 @@ public void run() {
 while ( watek == Thread.currentThread()) {
 Date time = new Date();
 DateFormat df = DateFormat.getTimeInstance(DateFormat.MEDIUM);
-setText(df.format(time));
+jLabel25.setText(df.format(time));
 try {
 watek.sleep(pauza);
 } catch (InterruptedException e) {}

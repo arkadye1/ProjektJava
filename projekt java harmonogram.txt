@@ -18,7 +18,7 @@ Harmonogram:
 - aktualna godzina i orientacyjny czas realizacji zamówienia //oddano 28.04.2015
 - Wielodostêpowy serwer (kilku klientów na raz)
 -U klienta nas³uchiwanie od serwera w osobnym w¹tku
-- Obs³uga sieci w osobnym w¹tku
+- Obs³uga sieci w osobnym w¹tku //oddano 5.05.2015
 4.Bazy danych:
 - Zaimplementowanie po³¹czenia z baz¹ danych //oddano 28.04.2015
 -  Rejestracja nowych u¿ytkowników  //oddano 28.04.2015
